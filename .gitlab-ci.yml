@@ -1,0 +1,20 @@
+default:
+  image: node:20-alpine
+
+cache:
+  key: ${CI_COMMIT_REF_SLUG}
+  policy: pull-push
+  paths:
+    - .npm/
+
+tests:
+  stage: test
+  script:
+    - npm ci --cache .npm --prefer-offline --loglevel notice
+    - npm run lint
+    - npm run test:coverage
+  coverage: /All files[^\|]*\|[^\|]*\s+([\d\.]+)/
+  artifacts:
+    paths:
+      - coverage/ 
+

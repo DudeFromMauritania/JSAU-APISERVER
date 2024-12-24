@@ -1,0 +1,12 @@
+**/node_modules/
+
+!**/.eslintrc.js  
+**/*.css
+**/*.html
+**/.env
+**/coverage/
+**/.DS_Store
+**/.idea/
+/out/
+/target/
+/temp/
